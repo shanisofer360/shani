@@ -1,0 +1,450 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  padding: 1.5rem 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: radial-gradient(circle at top left, #1d4ed8, #020617);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.app-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #22c55e, #0ea5e9);
+  color: #0f172a;
+  font-weight: 700;
+  font-size: 1.3rem;
+  box-shadow: 0 10px 30px rgba(34, 197, 94, 0.5);
+}
+
+.app-title h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.app-title p {
+  margin: 0.2rem 0 0;
+  color: #cbd5f5;
+  font-size: 0.9rem;
+}
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.summary-card {
+  background: rgba(15, 23, 42, 0.85);
+  border-radius: 0.9rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  backdrop-filter: blur(10px);
+}
+
+.summary-card h3 {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.summary-card .value {
+  margin-top: 0.25rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.summary-card .sub {
+  margin-top: 0.1rem;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.5rem 1.5rem 0;
+  background: #020617;
+  border-bottom: 1px solid rgba(30, 64, 175, 0.7);
+}
+
+.tab {
+  border: none;
+  background: transparent;
+  color: #9ca3af;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.18s ease;
+}
+
+.tab:hover {
+  color: #e5e7eb;
+  background: rgba(30, 64, 175, 0.4);
+}
+
+.tab.active {
+  color: #e5e7eb;
+  background: linear-gradient(135deg, #1d4ed8, #4f46e5);
+  box-shadow: 0 12px 25px rgba(37, 99, 235, 0.4);
+}
+
+.tab-content {
+  flex: 1;
+  padding: 1rem 1.5rem 1.5rem;
+  background: radial-gradient(circle at top, #020617 0%, #020617 40%, #000 100%);
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.panel-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.panel-body {
+  background: rgba(15, 23, 42, 0.95);
+  border-radius: 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+}
+
+button.primary {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border: none;
+  color: #0f172a;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 10px 30px rgba(34, 197, 94, 0.6);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+
+button.primary:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 35px rgba(34, 197, 94, 0.7);
+}
+
+button.primary:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.data-table thead {
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.5rem 0.45rem;
+  text-align: right;
+}
+
+.data-table th {
+  font-weight: 600;
+  color: #9ca3af;
+  border-bottom: 1px solid rgba(55, 65, 81, 0.9);
+  white-space: nowrap;
+}
+
+.data-table tbody tr:nth-child(even) {
+  background: rgba(15, 23, 42, 0.8);
+}
+
+.data-table tbody tr:nth-child(odd) {
+  background: rgba(15, 23, 42, 0.95);
+}
+
+.data-table tbody tr:hover {
+  background: rgba(30, 64, 175, 0.4);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.chip.status-draft {
+  background: rgba(148, 163, 184, 0.3);
+  color: #e5e7eb;
+}
+
+.chip.status-sent {
+  background: rgba(37, 99, 235, 0.3);
+  color: #bfdbfe;
+}
+
+.chip.status-paid {
+  background: rgba(22, 163, 74, 0.35);
+  color: #bbf7d0;
+}
+
+.chip.status-cancelled {
+  background: rgba(239, 68, 68, 0.35);
+  color: #fecaca;
+}
+
+.dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.dialog-backdrop.hidden {
+  display: none;
+}
+
+.dialog {
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  background: #020617;
+  border-radius: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.95);
+  display: flex;
+  flex-direction: column;
+}
+
+.dialog-header {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid rgba(31, 41, 55, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dialog-header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.dialog-body {
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.dialog-footer {
+  padding: 0.9rem 1rem;
+  border-top: 1px solid rgba(31, 41, 55, 0.9);
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.icon-btn {
+  border: none;
+  background: transparent;
+  color: #9ca3af;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.icon-btn:hover {
+  color: #e5e7eb;
+}
+
+form .field {
+  margin-bottom: 0.75rem;
+}
+
+form label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.85rem;
+  color: #e5e7eb;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 0.4rem 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(55, 65, 81, 0.9);
+  background: #020617;
+  color: #e5e7eb;
+  font-size: 0.85rem;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 1px #3b82f6;
+}
+
+.btn-secondary {
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: transparent;
+  color: #e5e7eb;
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.btn-secondary:hover {
+  background: rgba(31, 41, 55, 0.9);
+}
+
+.items-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.25rem;
+  font-size: 0.83rem;
+}
+
+.items-table th,
+.items-table td {
+  padding: 0.3rem;
+  border-bottom: 1px solid rgba(31, 41, 55, 0.9);
+}
+
+.items-table th {
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.muted {
+  color: #6b7280;
+  font-size: 0.8rem;
+}
+
+.error {
+  color: #fecaca;
+  background: rgba(127, 29, 29, 0.4);
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.report-tabs {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.report-tab {
+  border: none;
+  background: rgba(30, 64, 175, 0.3);
+  color: #e5e7eb;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.report-tab:hover { background: rgba(30, 64, 175, 0.5); }
+.report-tab.active { background: linear-gradient(135deg, #1d4ed8, #4f46e5); }
+.report-filters {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.report-filters input { width: auto; }
+.report-content { margin-top: 0.5rem; }
+.report-content h3 { margin: 0 0 0.5rem; font-size: 1rem; }
+.report-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.report-table th, .report-table td { padding: 0.4rem 0.5rem; text-align: right; border-bottom: 1px solid rgba(55,65,81,0.8); }
+.report-table th { color: #9ca3af; }
+.report-summary { font-weight: 600; margin-top: 0.5rem; }
+
+.dialog.wide { max-width: 640px; }
+.btn-small { padding: 0.25rem 0.5rem; font-size: 0.8rem; }
+
+@media (max-width: 768px) {
+  .app-header {
+    padding: 1rem 1rem 0.75rem;
+  }
+
+  .tab-content {
+    padding: 0.8rem;
+  }
+
+  .panel-body {
+    padding: 0.7rem;
+  }
+
+  .app-title h1 {
+    font-size: 1.3rem;
+  }
+}
+

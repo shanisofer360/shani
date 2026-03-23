@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>מערכת הנהלת חשבונות - מנהל חשבונות דיגיטלי</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app-header">
+        <div class="app-title">
+          <span class="logo-circle">₪</span>
+          <div>
+            <h1>מנהל חשבונות דיגיטלי</h1>
+            <p>ניהול לקוחות, חשבוניות, הוצאות ודוחות במקום אחד</p>
+          </div>
+        </div>
+        <div class="summary-cards" id="summaryCards"></div>
+      </header>
+
+      <nav class="tabs">
+        <button data-tab="dashboard" class="tab active">לוח בקרה</button>
+        <button data-tab="contacts" class="tab">לקוחות / ספקים</button>
+        <button data-tab="invoices" class="tab">חשבוניות</button>
+        <button data-tab="transactions" class="tab">תנועות יומן</button>
+        <button data-tab="fixed-assets" class="tab">נכסים קבועים</button>
+        <button data-tab="reports" class="tab">דוחות</button>
+        <button data-tab="settings" class="tab">הגדרות</button>
+      </nav>
+
+      <main class="tab-content">
+        <section id="tab-dashboard" class="tab-panel active">
+          <h2>תמונת מצב</h2>
+          <div id="dashboardContent" class="panel-body">
+            טוען נתונים...
+          </div>
+        </section>
+
+        <section id="tab-contacts" class="tab-panel">
+          <div class="panel-header">
+            <h2>לקוחות וספקים</h2>
+            <button id="btnNewContact" class="primary">יצירת איש קשר</button>
+          </div>
+          <div class="panel-body">
+            <table class="data-table" id="contactsTable">
+              <thead>
+                <tr>
+                  <th>שם</th>
+                  <th>סוג</th>
+                  <th>מייל</th>
+                  <th>טלפון</th>
+                  <th>ת.ז / ח.פ</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="tab-invoices" class="tab-panel">
+          <div class="panel-header">
+            <h2>חשבוניות</h2>
+            <button id="btnNewInvoice" class="primary">הפקת חשבונית</button>
+          </div>
+          <div class="panel-body">
+            <table class="data-table" id="invoicesTable">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>תאריך</th>
+                  <th>לקוח</th>
+                  <th>סה"כ לפני מע"מ</th>
+                  <th>מע"מ</th>
+                  <th>סכום כולל</th>
+                  <th>סטטוס</th>
+                  <th>רישום ליומן</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="tab-transactions" class="tab-panel">
+          <div class="panel-header">
+            <h2>תנועות יומן</h2>
+            <button id="btnNewTransaction" class="primary">רישום תנועה</button>
+          </div>
+          <div class="panel-body">
+            <table class="data-table" id="transactionsTable">
+              <thead>
+                <tr>
+                  <th>תאריך</th>
+                  <th>תיאור</th>
+                  <th>חובה</th>
+                  <th>זכות</th>
+                  <th>סכום</th>
+                  <th>איש קשר</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="tab-fixed-assets" class="tab-panel">
+          <div class="panel-header">
+            <h2>נכסים קבועים ופחת</h2>
+            <button id="btnNewFixedAsset" class="primary">הוספת נכס</button>
+          </div>
+          <div class="panel-body">
+            <table class="data-table" id="fixedAssetsTable">
+              <thead>
+                <tr>
+                  <th>שם</th>
+                  <th>תאריך רכישה</th>
+                  <th>עלות</th>
+                  <th>תקופה (שנים)</th>
+                  <th>שייר</th>
+                  <th>פחת שנתי</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <div class="panel-header" style="margin-top:1rem">
+              <h3>לוח פחת</h3>
+              <div class="report-filters">
+                <label>תאריך:</label>
+                <input type="date" id="reportDateDep" />
+                <button type="button" class="btn-secondary" id="btnRefreshDepSchedule">רענן</button>
+                <button id="btnRunDepreciation" class="primary">ביצוע פחת לתקופה</button>
+              </div>
+            </div>
+            <div id="depreciationSchedule" class="panel-body"></div>
+          </div>
+        </section>
+
+        <section id="tab-reports" class="tab-panel">
+          <div class="panel-header">
+            <h2>דוחות</h2>
+          </div>
+          <div class="report-tabs">
+            <button data-report="vat" class="report-tab active">דוח מע"מ</button>
+            <button data-report="balance" class="report-tab">מאזן</button>
+            <button data-report="pl" class="report-tab">רווח והפסד</button>
+            <button data-report="depreciation" class="report-tab">פחת</button>
+          </div>
+          <div id="reportFilters" class="report-filters"></div>
+          <div id="reportContent" class="panel-body report-content"></div>
+        </section>
+
+        <section id="tab-settings" class="tab-panel">
+          <div class="panel-header">
+            <h2>הגדרות</h2>
+          </div>
+          <div class="panel-body" id="settingsPanel">
+            <form id="settingsForm">
+              <div class="field">
+                <label>שיעור מע"מ (%)</label>
+                <input type="number" name="vat_rate" step="0.01" min="0" max="100" placeholder="17" />
+              </div>
+              <button type="submit" class="primary">שמירת הגדרות</button>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <!-- Dialog overlay -->
+      <div class="dialog-backdrop hidden" id="dialogBackdrop">
+        <div class="dialog" id="dialog">
+          <header class="dialog-header">
+            <h3 id="dialogTitle"></h3>
+            <button id="dialogClose" class="icon-btn" aria-label="סגירה">✕</button>
+          </header>
+          <div class="dialog-body" id="dialogBody"></div>
+          <footer class="dialog-footer" id="dialogFooter"></footer>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
+
